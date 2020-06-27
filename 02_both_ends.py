@@ -7,12 +7,16 @@ Exemplo: 'spring' retorna 'spng'. Entretanto, se o tamanho da string
 for menor que 2, retorne uma string vazia.
 """
 
+
 def both_ends(s):
-    # +++ SUA SOLUÇÃO +++
-    return
+    msg = ""
+    if len(s) > 1:
+        msg = s[:2] + s[-2:]
+    return msg
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
+
 
 def test(f, in_, expected):
     """
@@ -22,18 +26,18 @@ def test(f, in_, expected):
     out = f(in_)
 
     if out == expected:
-        sign = '✅'
-        info = ''
+        sign = "✅"
+        info = ""
     else:
-        sign = '❌'
-        info = f'e o correto é {expected!r}'
+        sign = "❌"
+        info = f"e o correto é {expected!r}"
 
-    print(f'{sign} {f.__name__}({in_!r}) retornou {out!r} {info}')
+    print(f"{sign} {f.__name__}({in_!r}) retornou {out!r} {info}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Testes que verificam o resultado do seu código em alguns cenários.
-    test(both_ends, 'spring', 'spng')
-    test(both_ends, 'Hello', 'Helo')
-    test(both_ends, 'a', '')
-    test(both_ends, 'xyz', 'xyyz')
+    test(both_ends, "spring", "spng")
+    test(both_ends, "Hello", "Helo")
+    test(both_ends, "a", "")
+    test(both_ends, "xyz", "xyyz")
