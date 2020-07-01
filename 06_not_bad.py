@@ -14,7 +14,7 @@ def not_bad(s):
     start = s.find("not")
     end = s.find("bad")
     if start < end:
-        s = s.replace(s[start : end + 3], "good")
+        s = s.replace(s[start:end + 3], "good")
     return s
 
 
