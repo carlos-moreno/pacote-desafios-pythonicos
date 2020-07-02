@@ -1,3 +1,5 @@
+import re
+
 """
 06. not_bad
 
@@ -10,11 +12,17 @@ Exemplo: 'The dinner is not that bad!' retorna 'The dinner is good!'
 """
 
 
+def find_pattern(s):
+    regex = r".?not.*.?bad?"
+    matches = re.finditer(regex, s)
+    pattern = [(match.start(), match.end()) for match in matches]
+    return pattern
+
+
 def not_bad(s):
-    start = s.find("not")
-    end = s.find("bad")
-    if start < end:
-        s = s.replace(s[start:end + 3], "good")
+    if find_pattern(s):
+        start, end = find_pattern(s)[0]
+        s = s.replace(s[start:end], " good")
     return s
 
 
@@ -44,3 +52,5 @@ if __name__ == "__main__":
     test(not_bad, "This dinner is not that bad!", "This dinner is good!")
     test(not_bad, "This tea is not hot", "This tea is not hot")
     test(not_bad, "It's bad yet not", "It's bad yet not")
+    test(not_bad, "This movie is not not not so bad", "This movie is good")
+    test(not_bad, "The car is bad or not", "The car is bad or not")
