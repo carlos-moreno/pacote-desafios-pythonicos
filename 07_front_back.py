@@ -1,3 +1,4 @@
+from math import ceil
 """
 07. front_back
 
@@ -20,10 +21,18 @@ def divide_string(string):
     return a, b
 
 
-def front_back(a, b):
+def front_back_solution_one(a, b):
     first = divide_string(a)
     second = divide_string(b)
     return f"{first[0]}{second[0]}{first[1]}{second[1]}"
+
+
+def front_back(a, b):
+    result = a[:ceil(len(a) / 2)], \
+             b[:ceil(len(b) / 2)], \
+             a[ceil(len(a) / 2):], \
+             b[ceil(len(b) / 2):]
+    return ''.join(result)
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
